@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище InsuranceModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="clients">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FIO_client" Type="varchar(max)" Nullable="false" />
+    <Property Name="date_birth" Type="date" Nullable="false" />
+    <Property Name="passport" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="driving_licence" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="PTS" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="employees">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FIO_insurer" Type="varchar(max)" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="50" />
+    <Property Name="date_birth" Type="date" Nullable="false" />
+    <Property Name="passport" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="photo" Type="nvarchar(max)" />
+    <Property Name="address" Type="varchar(max)" Nullable="false" />
+    <Property Name="id_position" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="insurance">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="insurence" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="start_date" Type="date" />
+    <Property Name="end_date" Type="date" />
+    <Property Name="id_client" Type="int" Nullable="false" />
+    <Property Name="car_owner" Type="varchar(max)" Nullable="false" />
+    <Property Name="car_model" Type="varchar(max)" Nullable="false" />
+    <Property Name="identification_number" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="registration_number" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="id_calculation" Type="int" Nullable="false" />
+    <Property Name="id_employee" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="insurance_calc">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tb" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="kt" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="kbm" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="kvs" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ko" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="km" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ks" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="total" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="positions">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="position" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="salary" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="login" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="role" Type="int" Nullable="false" />
+    <Property Name="id_employees" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_employees_positions">
+    <End Role="positions" Type="Self.positions" Multiplicity="1" />
+    <End Role="employees" Type="Self.employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="positions">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="employees">
+        <PropertyRef Name="id_position" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_insurance_clients">
+    <End Role="clients" Type="Self.clients" Multiplicity="1" />
+    <End Role="insurance" Type="Self.insurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clients">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="insurance">
+        <PropertyRef Name="id_client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_insurance_employees">
+    <End Role="employees" Type="Self.employees" Multiplicity="1" />
+    <End Role="insurance" Type="Self.insurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employees">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="insurance">
+        <PropertyRef Name="id_employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_insurance_insurance_calc">
+    <End Role="insurance_calc" Type="Self.insurance_calc" Multiplicity="1" />
+    <End Role="insurance" Type="Self.insurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="insurance_calc">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="insurance">
+        <PropertyRef Name="id_calculation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_users_employees">
+    <End Role="employees" Type="Self.employees" Multiplicity="1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employees">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="id_employees" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище InsuranceModelContainer">
+    <EntitySet Name="clients" EntityType="Self.clients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="employees" EntityType="Self.employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="insurance" EntityType="Self.insurance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="insurance_calc" EntityType="Self.insurance_calc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="positions" EntityType="Self.positions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_employees_positions" Association="Self.FK_employees_positions">
+      <End Role="positions" EntitySet="positions" />
+      <End Role="employees" EntitySet="employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_insurance_clients" Association="Self.FK_insurance_clients">
+      <End Role="clients" EntitySet="clients" />
+      <End Role="insurance" EntitySet="insurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_insurance_employees" Association="Self.FK_insurance_employees">
+      <End Role="employees" EntitySet="employees" />
+      <End Role="insurance" EntitySet="insurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_insurance_insurance_calc" Association="Self.FK_insurance_insurance_calc">
+      <End Role="insurance_calc" EntitySet="insurance_calc" />
+      <End Role="insurance" EntitySet="insurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_users_employees" Association="Self.FK_users_employees">
+      <End Role="employees" EntitySet="employees" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

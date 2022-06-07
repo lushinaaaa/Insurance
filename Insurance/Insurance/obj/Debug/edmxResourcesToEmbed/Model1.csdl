@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InsuranceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="clients">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FIO_client" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="date_birth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="passport" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="driving_licence" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PTS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="insurance" Relationship="Self.FK_insurance_clients" FromRole="clients" ToRole="insurance" />
+  </EntityType>
+  <EntityType Name="employees">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FIO_insurer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="date_birth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="passport" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id_position" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="positions" Relationship="Self.FK_employees_positions" FromRole="employees" ToRole="positions" />
+    <NavigationProperty Name="insurance" Relationship="Self.FK_insurance_employees" FromRole="employees" ToRole="insurance" />
+    <NavigationProperty Name="users" Relationship="Self.FK_users_employees" FromRole="employees" ToRole="users" />
+  </EntityType>
+  <EntityType Name="insurance">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="insurence" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="start_date" Type="DateTime" Precision="0" />
+    <Property Name="end_date" Type="DateTime" Precision="0" />
+    <Property Name="id_client" Type="Int32" Nullable="false" />
+    <Property Name="car_owner" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="car_model" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="identification_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="registration_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id_calculation" Type="Int32" Nullable="false" />
+    <Property Name="id_employee" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="clients" Relationship="Self.FK_insurance_clients" FromRole="insurance" ToRole="clients" />
+    <NavigationProperty Name="employees" Relationship="Self.FK_insurance_employees" FromRole="insurance" ToRole="employees" />
+    <NavigationProperty Name="insurance_calc" Relationship="Self.FK_insurance_insurance_calc" FromRole="insurance" ToRole="insurance_calc" />
+  </EntityType>
+  <EntityType Name="insurance_calc">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tb" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="kt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="kbm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="kvs" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="km" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="total" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="insurance" Relationship="Self.FK_insurance_insurance_calc" FromRole="insurance_calc" ToRole="insurance" />
+  </EntityType>
+  <EntityType Name="positions">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="position" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="salary" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="employees" Relationship="Self.FK_employees_positions" FromRole="positions" ToRole="employees" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="login" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="role" Type="Int32" Nullable="false" />
+    <Property Name="id_employees" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="employees" Relationship="Self.FK_users_employees" FromRole="users" ToRole="employees" />
+  </EntityType>
+  <Association Name="FK_insurance_clients">
+    <End Role="clients" Type="Self.clients" Multiplicity="1" />
+    <End Role="insurance" Type="Self.insurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clients">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="insurance">
+        <PropertyRef Name="id_client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_employees_positions">
+    <End Role="positions" Type="Self.positions" Multiplicity="1" />
+    <End Role="employees" Type="Self.employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="positions">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="employees">
+        <PropertyRef Name="id_position" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_insurance_employees">
+    <End Role="employees" Type="Self.employees" Multiplicity="1" />
+    <End Role="insurance" Type="Self.insurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employees">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="insurance">
+        <PropertyRef Name="id_employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_users_employees">
+    <End Role="employees" Type="Self.employees" Multiplicity="1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employees">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="id_employees" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_insurance_insurance_calc">
+    <End Role="insurance_calc" Type="Self.insurance_calc" Multiplicity="1" />
+    <End Role="insurance" Type="Self.insurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="insurance_calc">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="insurance">
+        <PropertyRef Name="id_calculation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="InsuranceEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="clients" EntityType="Self.clients" />
+    <EntitySet Name="employees" EntityType="Self.employees" />
+    <EntitySet Name="insurance" EntityType="Self.insurance" />
+    <EntitySet Name="insurance_calc" EntityType="Self.insurance_calc" />
+    <EntitySet Name="positions" EntityType="Self.positions" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="users" EntityType="Self.users" />
+    <AssociationSet Name="FK_insurance_clients" Association="Self.FK_insurance_clients">
+      <End Role="clients" EntitySet="clients" />
+      <End Role="insurance" EntitySet="insurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_employees_positions" Association="Self.FK_employees_positions">
+      <End Role="positions" EntitySet="positions" />
+      <End Role="employees" EntitySet="employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_insurance_employees" Association="Self.FK_insurance_employees">
+      <End Role="employees" EntitySet="employees" />
+      <End Role="insurance" EntitySet="insurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_users_employees" Association="Self.FK_users_employees">
+      <End Role="employees" EntitySet="employees" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_insurance_insurance_calc" Association="Self.FK_insurance_insurance_calc">
+      <End Role="insurance_calc" EntitySet="insurance_calc" />
+      <End Role="insurance" EntitySet="insurance" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,132 @@
+﻿<Window x:Class="Insurance.CountInsurance"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Insurance"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="Расчет страховки" Height="450" Width="800" Icon="/Insurance;component/лого.jpg">
+    <Grid x:Name="Content">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="mainText" Text="Расчет страховки" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Black"/>
+        <Grid Grid.Row="1" Grid.Column="0" x:Name="phoneGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label Content="ТБ" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Grid.Row="0" Grid.Column="0"/>
+            <TextBox x:Name="TB" Width="120" Height="25" TextChanged="TB_TextChanged" Tag="fname" Grid.Row="0" Grid.Column="1" PreviewTextInput="TB_PreviewTextInput" ToolTip="Базовая ставка: 4570 рублей"/>
+
+            <Label Content="КТ" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Grid.Row="1" Grid.Column="0"/>
+            <TextBox x:Name="KT" Width="120" Height="25" TextChanged="KT_TextChanged" Tag="fname" Grid.Row="1" Grid.Column="1" PreviewTextInput="KT_PreviewTextInput" ToolTip="Территориальный коэффициент: Москва: 2; МО: 1,7; Рязань: 1,4"/>
+
+            <Label Content="КБМ" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Grid.Row="2" Grid.Column="0" Height="40" VerticalAlignment="Bottom"/>
+            <TextBox x:Name="KBM" Width="120" Height="25" TextChanged="KBM_TextChanged" Tag="fname" Grid.Row="2" Grid.Column="1" PreviewTextInput="KBM_PreviewTextInput">
+                <TextBox.ToolTip>
+                <ToolTip Width="500" Height="600">
+                    <StackPanel>
+                        <TextBlock Text="Коэффициент бонус-малус" />
+                            <Image Source="/KBM.png" Width="500"/>
+                    </StackPanel>
+                </ToolTip>
+                </TextBox.ToolTip>
+            </TextBox>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="1" x:Name="passportGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label Content="КВС" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Grid.Row="0" Grid.Column="0"/>
+            <TextBox x:Name="KVS" Width="120" Height="25" TextChanged="KVS_TextChanged" Tag="fname" Grid.Row="0" Grid.Column="1" PreviewTextInput="KVS_PreviewTextInput">
+                <TextBox.ToolTip>
+                    <ToolTip Width="800" Height="300">
+                        <StackPanel>
+                            <TextBlock Text="Коэффициент по возрасту и стажу" />
+                            <Image Source="/КВС.png" Width="800" Height="250"/>
+                        </StackPanel>
+                    </ToolTip>
+                </TextBox.ToolTip>
+            </TextBox>
+            
+            <Label Content="КО" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Grid.Row="1" Grid.Column="0"/>
+            <TextBox x:Name="KO" Width="120" Height="25" TextChanged="KO_TextChanged" Tag="city" Grid.Row="1" Grid.Column="1" PreviewTextInput="KO_PreviewTextInput">
+                <TextBox.ToolTip>
+                    <ToolTip Width="800" Height="300">
+                        <StackPanel>
+                            <TextBlock Text="Коэффициент количества допущеных к управлению водителей"/>
+                            <Image Source="/КО.png" Width="800" Height="250"/>
+                        </StackPanel>
+                    </ToolTip>
+                </TextBox.ToolTip>
+            </TextBox>
+            
+            <Label Content="КМ" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Grid.Row="2" Grid.Column="0"/>
+            <TextBox x:Name="KM" Width="120" Height="25" TextChanged="KM_TextChanged" Tag="city" Grid.Row="2" Grid.Column="1" PreviewTextInput="KM_PreviewTextInput">
+                <TextBox.ToolTip>
+                    <ToolTip Width="800" Height="300">
+                        <StackPanel>
+                            <TextBlock Text="Коэффициент, зависящий от мощности автомобиля"/>
+                            <Image Source="/КМ.png" Width="800" Height="250"/>
+                        </StackPanel>
+                    </ToolTip>
+                </TextBox.ToolTip>
+            </TextBox>
+            
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="2" x:Name="passGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label Content="КС" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Grid.Row="0" Grid.Column="0"/>
+            <TextBox x:Name="KS" Width="120" Height="25" TextChanged="KS_TextChanged" Tag="fname" Grid.Row="0" Grid.Column="1" PreviewTextInput="KS_PreviewTextInput">
+                <TextBox.ToolTip>
+                    <ToolTip Width="700" Height="300">
+                        <StackPanel>
+                            <TextBlock Text="Коэффициент, зависящий от периода использования ТС"/>
+                            <Image Source="/КС.png" Width="800" Height="250"/>
+                        </StackPanel>
+                    </ToolTip>
+                </TextBox.ToolTip>
+            </TextBox>
+
+            <Button x:Name="Count" Content="Рассчитать" Grid.Row="1" Grid.Column="1" Height="30" Width="120" Click="Count_Click" Background="#FFE3E8F7" BorderBrush="#FFCBDCEA" FontFamily="Imprint MT Shadow" FontSize="14"/>
+            
+            <Label Content="Итог" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Grid.Row="2" Grid.Column="0"/>
+            <TextBlock x:Name="Done" Width="120" Height="25" Tag="fname" Grid.Row="2" Grid.Column="1" TextAlignment="Center" Margin="0 12 0 0 "/>
+
+        </Grid>
+        <Button x:Name="saveButton" Content="Сохранить" Grid.Row="2" Grid.ColumnSpan="3" Width="120" Height="30" Background="#FFD1E2F1" BorderBrush="#FFCBDCEA" FontFamily="Imprint MT Shadow" FontSize="14" Click="saveButton_Click"/>
+    </Grid>
+</Window>

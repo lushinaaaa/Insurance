@@ -1,0 +1,14 @@
+﻿<Application x:Class="Insurance.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Insurance"
+    StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#FFD1E2F1"/>
+            <Setter Property="BorderBrush" Value="#FFCBDCEA"/>
+            <Setter Property="FontFamily" Value="Imprint MT Shadow"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+    </Application.Resources>
+</Application>

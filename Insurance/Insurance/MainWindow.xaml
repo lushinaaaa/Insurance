@@ -1,0 +1,18 @@
+﻿<Window x:Class="Insurance.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Insurance"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="Авторизация" Height="372" Width="631" Icon="лого.jpg">
+    <Grid Margin="0,0,10,-6">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.FontSize="20">
+            <Label Content="Логин" HorizontalContentAlignment="Center" FontFamily="Imprint MT Shadow" FontSize="20" />
+            <TextBox x:Name="loginBox" Width="236" Height="35" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="#FF0C1223"/>
+            <Label Content="Пароль" HorizontalContentAlignment="Center" FontFamily="Imprint MT Shadow" FontSize="20" />
+            <PasswordBox x:Name="passwordBox" Width="234" Height="35" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" PasswordChar="*"  BorderBrush="#FF020612"/>
+            <Button x:Name="authButton" Content="Войти" Margin="15 15" Height="30" Click="authButton_Click" Width="177" FontSize="18"/>
+        </StackPanel>
+    </Grid>
+</Window>

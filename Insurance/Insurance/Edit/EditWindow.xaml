@@ -1,0 +1,54 @@
+﻿<Window x:Class="Insurance.EditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Insurance"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="Панель редактирования" Height="450" Width="800" Icon="/Insurance;component/лого.jpg">
+    <Grid x:Name="mainGrid">
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.RowSpan="3" RenderTransformOrigin="0.5,0.5">
+            <!--<Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                            <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Offset="0.164"/>
+                    <GradientStop Color="White"/>
+                </LinearGradientBrush>
+            </Grid.Background>-->
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button x:Name="backButton" Content="Назад" Width="100" Height="30" Grid.Row="0" Click="BackButton_Click" Background="#FFD1E2F1" BorderBrush="#FFCBDCEA" FontFamily="Imprint MT Shadow" FontSize="14"/>
+            <Button x:Name="positions" Content="Должности" Width="150" Height="40" Grid.Row="1" Click="Positions_Click" Background="#FFD1E2F1" BorderBrush="#FFCBDCEA" FontFamily="Imprint MT Shadow" FontSize="14"/>
+            <Button x:Name="userButton" Content="Пользователи" Width="150" Height="40" Grid.Row="2" Click="UserButton_Click"  Background="#FFD1E2F1" BorderBrush="#FFCBDCEA" FontFamily="Imprint MT Shadow" FontSize="14"/>
+        </Grid>
+
+        <!--<Button x:Name="positions" Content="Должности" Width="150" Height="40" Grid.Row="0" Grid.Column="1" Click="Positions_Click" Background="#FFD1E2F1" BorderBrush="#FFCBDCEA" FontFamily="Imprint MT Shadow" FontSize="14"/>-->
+        <Button x:Name="employees" Content="Сотрудники" Width="150" Height="40" Grid.Row="1" Grid.Column="1" Click="Employees_Click" Background="#FFD1E2F1" BorderBrush="#FFCBDCEA" FontFamily="Imprint MT Shadow" FontSize="14"/>
+        <Button x:Name="clients" Content="Клиенты" Width="150" Height="40" Grid.Row="2" Grid.Column="1" Click="Clients_Click" Background="#FFD1E2F1" BorderBrush="#FFCBDCEA" FontFamily="Imprint MT Shadow" FontSize="14"/>
+
+        <!--<Button x:Name="userButton" Content="Пользователи" Width="150" Height="40" Grid.Row="0" Grid.Column="2" Click="UserButton_Click"  Background="#FFD1E2F1" BorderBrush="#FFCBDCEA" FontFamily="Imprint MT Shadow" FontSize="14"/>-->
+        <Button x:Name="Insurance" Content="Страховка" Width="150" Height="40" Grid.Row="1" Grid.Column="2" Click="Insurance_Click" Background="#FFD1E2F1" BorderBrush="#FFCBDCEA" FontFamily="Imprint MT Shadow" FontSize="14" />
+        <Button x:Name="Insurance_Calc" Content="Стоимость страховки" Width="150" Height="40" Grid.Row="2" Grid.Column="2" Click="Insurance_Calc_Click" Background="#FFD1E2F1" BorderBrush="#FFCBDCEA" FontFamily="Imprint MT Shadow" FontSize="14" />
+    </Grid>
+</Window>

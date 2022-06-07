@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище InsuranceModelContainer" CdmEntityContainer="InsuranceEntities">
+    <EntitySetMapping Name="clients">
+      <EntityTypeMapping TypeName="InsuranceModel.clients">
+        <MappingFragment StoreEntitySet="clients">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="FIO_client" ColumnName="FIO_client" />
+          <ScalarProperty Name="date_birth" ColumnName="date_birth" />
+          <ScalarProperty Name="passport" ColumnName="passport" />
+          <ScalarProperty Name="driving_licence" ColumnName="driving_licence" />
+          <ScalarProperty Name="PTS" ColumnName="PTS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employees">
+      <EntityTypeMapping TypeName="InsuranceModel.employees">
+        <MappingFragment StoreEntitySet="employees">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="FIO_insurer" ColumnName="FIO_insurer" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="date_birth" ColumnName="date_birth" />
+          <ScalarProperty Name="passport" ColumnName="passport" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="id_position" ColumnName="id_position" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="insurance">
+      <EntityTypeMapping TypeName="InsuranceModel.insurance">
+        <MappingFragment StoreEntitySet="insurance">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="insurence" ColumnName="insurence" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="id_client" ColumnName="id_client" />
+          <ScalarProperty Name="car_owner" ColumnName="car_owner" />
+          <ScalarProperty Name="car_model" ColumnName="car_model" />
+          <ScalarProperty Name="identification_number" ColumnName="identification_number" />
+          <ScalarProperty Name="registration_number" ColumnName="registration_number" />
+          <ScalarProperty Name="id_calculation" ColumnName="id_calculation" />
+          <ScalarProperty Name="id_employee" ColumnName="id_employee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="insurance_calc">
+      <EntityTypeMapping TypeName="InsuranceModel.insurance_calc">
+        <MappingFragment StoreEntitySet="insurance_calc">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tb" ColumnName="tb" />
+          <ScalarProperty Name="kt" ColumnName="kt" />
+          <ScalarProperty Name="kbm" ColumnName="kbm" />
+          <ScalarProperty Name="kvs" ColumnName="kvs" />
+          <ScalarProperty Name="ko" ColumnName="ko" />
+          <ScalarProperty Name="km" ColumnName="km" />
+          <ScalarProperty Name="ks" ColumnName="ks" />
+          <ScalarProperty Name="total" ColumnName="total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="positions">
+      <EntityTypeMapping TypeName="InsuranceModel.positions">
+        <MappingFragment StoreEntitySet="positions">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="InsuranceModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="InsuranceModel.users">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="id_employees" ColumnName="id_employees" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
